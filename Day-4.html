@@ -1,0 +1,47 @@
+<!-- // Day 4: DOM Manipulation
+// Topics to Learn:
+// Selecting Elements (getElementById, querySelector)
+// Modifying Content and Attributes
+// Event Listeners
+// Task: Button Click Color Changer
+// Description: Create a simple webpage with:
+// A paragraph with the text: "Click the button to change my color."
+// A button labeled "Change Color".
+// When the button is clicked, the paragraph text color changes randomly.
+// Expected Output:
+// On clicking the button, the paragraph's color changes dynamically to random colors. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuerySelectors</title>
+    <style>
+
+    #mydiv{
+        cursor: pointer;;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="mydiv">mydiv says this is initial text</div>
+
+    <script>
+      const selectedID = document.getElementById("mydiv");
+      function changeColor(color) {
+        selectedID.textContent = "mydiv just shut up";
+        selectedID.innerHTML =
+          "mydiv <strong>HTML Content by InnerHTML</strong>";
+        selectedID.style.color = color;
+      }
+
+      selectedID.addEventListener("click", function () {
+    const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
+    const randomIndex = Math.floor(Math.random()*colors.length);
+    const randomColor = colors[randomIndex];
+        changeColor(randomColor);
+      });
+    </script>
+  </body>
+</html>
