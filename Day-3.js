@@ -19,6 +19,7 @@
 // Total Price: 1700
 // Adding Discount...
 // Updated Cart: Shirt (450), Jeans (1080)
+const { log } = require("console");
 const readline = require("readline");
 
 let cart = [
@@ -140,13 +141,44 @@ function showMenu() {
 }
 
 // Start the program
-showMenu();
+// showMenu();
 
 // 2. Write a program to find the longest word in a given string.
+// const words = ['a', 'cat', 'hello', 'awesome', 'university', 'JavaScript', 'supercalifragilisticexpialidocious'];
+// const wordLength  = words.map(word=>word.length);
+// console.log(wordLength.join(' - '));
+// let maxLengthWord = Math.max(...wordLength);
+// console.log(maxLengthWord);
+// let x = typeof(wordLength);
+// console.log(x);
+
 // 3. Create a program to find all pairs of numbers in an array whose sum equals a
 // given target.
 // Ex:
 // Array : [1, 2, 3, 4, 5]
 // Target value: 6
 // Output: [[1, 5], [2, 4]]
+
+function findPairs(arr,target){
+let pairs = [];
+    for(i = 0;i<arr.length;i++)
+        {
+            for(j=i+1;j<arr.length;j++)
+                {
+                    if(arr[i]+arr[j]== target)
+                        
+                        pairs.push([arr[i],arr[j]]);
+                         
+                
+            }
+        }
+
+        return pairs;
+    }
+    let arr = [23, 45, 67, 89, 12, 34, 56, 78, 90, 21];
+    // Target Sums: [68, 90, 112, 134, 35] //pick any of one
+    let target = 112;
+    let result=findPairs(arr,target)
+    console.log(result); //[ [ 23, 89 ], [ 45, 67 ], [ 34, 78 ] ]
+  
 
