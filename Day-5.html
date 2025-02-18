@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random joke generator</title>
+
+    <style>
+    
+        #loading {
+            font-size: 20px;
+            color: #333;
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+
+
+    <div id="joke-container">
+        <h1>Random Joke</h1>
+        <p id="setup"> </p>
+        <p id="punchline"> </p>
+        <button onclick="getJokes()"> Get new Joke !</button>
+        <div id="loading">Loading...</div>
+    </div>
+    <script>
+
+
+
+
+async function getJokes() {
+    document.getElementById('loading').style.display='block';
+    try {
+        const response = await fetch('https://official-joke-api.appspot.com/jokes/random');
+        if(!response.ok)
+        {
+            throw new error("there's something wrong in getting data");
+        }
+        const data = await response.json();
+        // console.log(data);
+        let setup = data.setup;
+        let punchline = data.punchline;
+        document.getElementById('setup').textContent=setup;
+        document.getElementById('punchline').textContent=punchline;
+
+        
+    } catch (error) {
+        console.error('there was an error',error);
+    }finally{document.getElementById('loading').style.display = 'none';}
+    
+}
+getJokes();
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
