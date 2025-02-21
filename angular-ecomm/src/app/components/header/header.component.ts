@@ -1,38 +1,23 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
+import { CartService } from '../../services/cart.service';
+import { RouterLink } from '@angular/router';
+import { PrimaryButtonComponent } from '../primary-button/primary-button.component';
 
 @Component({
   selector: 'app-header',
-  imports: [],
-  template: 
-    `<div class='header'>{{title()}}</div>`
-  ,
-  styles: `
-  .header{
-  background:rgba(0,0,0,0.5);
-  color:black;
-  padding:1rem
-  }
-
-  `
+  imports: [PrimaryButtonComponent, RouterLink],
+  template: `
+    <div
+      class="bg-slate-100 px-4 py-3 shadow-md flex justify-between items-center"
+    >
+      <button class="text-2xl" routerLink="/">My Store</button>
+      <app-primary-button label="{{ cartLabel() }}" routerLink="/cart" />
+    </div>
+  `,
+  styles: ``,
 })
 export class HeaderComponent {
-  title = signal("My Angular Ecomm");
+  cartService = inject(CartService);
 
-  
-
+  cartLabel = computed(() => `Cart (${this.cartService.cart().length})`);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
