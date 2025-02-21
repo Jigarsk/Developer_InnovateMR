@@ -18,7 +18,7 @@ import { PrimaryButtonComponent } from '../../../components/primary-button/prima
       </div>
       <div class="flex flex-col">
         <span class="text-md font-bold">{{ product().title }}</span>
-        <span class="text-sm"> {{ '$' + product().price }}</span>
+        <span class="text-sm"> {{ '₹' + product().price }}</span>
         <app-primary-button
           (btnClicked)="cartService.addToCart(product())"
           class="mt-3"
